@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map for Logging
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Loging        KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+debug KEYWORD2
+verbose KEYWORD2
+info KEYWORD2
+error KEYWORD2
+init KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+Log LITERAL1
