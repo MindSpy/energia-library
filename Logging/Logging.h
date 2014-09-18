@@ -13,11 +13,11 @@
 #define LOG_LEVEL_VERBOSE 4
 
 // default loglevel if nothing is set from user
-#define LOGLEVEL LOG_LEVEL_DEBUG 
 
 
 #define CR "\r\n"
 #define LOGGING_VERSION 1
+
 
 /*!
 * Logging is a helper class to output informations over
@@ -135,7 +135,44 @@ private:
 };
 
 extern Logging Log;
+
+#ifdef LOGLEVEL
+
+#if LOGLEVEL == LOG_LEVEL_VERBOSE
+#define VERBOSE(msg,...) Log.verbose(msg, __VA_ARGS__);
+#else
+#define VERBOSE(msg,...)
 #endif
+
+#if LOGLEVEL == LOG_LEVEL_DEBUG
+#define DEBUG(msg,...) Log.debug(msg, __VA_ARGS__);
+#else
+#define DEBUG(msg,...)
+#endif
+
+#if LOGLEVEL == LOG_LEVEL_INFO
+#define INFO(msg,...) Log.info(msg, __VA_ARGS__);
+#else
+#define INFO(msg,...)
+#endif
+
+#if LOGLEVEL == LOG_LEVEL_ERROR
+#define ERROR(msg,...) Log.error(msg, __VA_ARGS__);
+#else
+#define ERROR(msg,...)
+#endif
+
+#else
+
+#define VERBOSE(msg,...)
+#define DEBUG(msg,...)
+#define INFO(msg,...)
+#define ERROR(msg,...)
+
+#endif
+
+#endif
+
 
 
 
