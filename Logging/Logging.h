@@ -136,27 +136,27 @@ private:
 
 extern Logging Log;
 
-#ifdef LOGLEVEL
+#if defined(LOGLEVEL) && LOGLEVEL != LOG_LEVEL_NOOUTPUT
 
-#if LOGLEVEL == LOG_LEVEL_VERBOSE
+#if LOGLEVEL >= LOG_LEVEL_VERBOSE
 #define VERBOSE(msg,...) Log.verbose(msg, __VA_ARGS__);
 #else
 #define VERBOSE(msg,...)
 #endif
 
-#if LOGLEVEL == LOG_LEVEL_DEBUG
+#if LOGLEVEL >= LOG_LEVEL_DEBUG
 #define DEBUG(msg,...) Log.debug(msg, __VA_ARGS__);
 #else
 #define DEBUG(msg,...)
 #endif
 
-#if LOGLEVEL == LOG_LEVEL_INFO
+#if LOGLEVEL >= LOG_LEVEL_INFO
 #define INFO(msg,...) Log.info(msg, __VA_ARGS__);
 #else
 #define INFO(msg,...)
 #endif
 
-#if LOGLEVEL == LOG_LEVEL_ERROR
+#if LOGLEVEL >= LOG_LEVEL_ERROR
 #define ERROR(msg,...) Log.error(msg, __VA_ARGS__);
 #else
 #define ERROR(msg,...)
@@ -172,9 +172,5 @@ extern Logging Log;
 #endif
 
 #endif
-
-
-
-
 
 
