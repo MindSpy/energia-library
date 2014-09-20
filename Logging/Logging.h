@@ -3,7 +3,7 @@
 
 #include <inttypes.h>
 #include <stdarg.h>
-#include "Arduino.h"
+#include <Arduino.h>
 
 
 #define LOG_LEVEL_NOOUTPUT 0 
@@ -139,25 +139,25 @@ extern Logging Log;
 #if defined(LOGLEVEL) && LOGLEVEL != LOG_LEVEL_NOOUTPUT
 
 #if LOGLEVEL >= LOG_LEVEL_VERBOSE
-#define VERBOSE(msg,...) Log.verbose(msg, __VA_ARGS__);
+#define VERBOSE(msg,...) Log.verbose(msg, ## __VA_ARGS__)
 #else
 #define VERBOSE(msg,...)
 #endif
 
 #if LOGLEVEL >= LOG_LEVEL_DEBUG
-#define DEBUG(msg,...) Log.debug(msg, __VA_ARGS__);
+#define DEBUG(msg,...) Log.debug(msg, ## __VA_ARGS__)
 #else
 #define DEBUG(msg,...)
 #endif
 
 #if LOGLEVEL >= LOG_LEVEL_INFO
-#define INFO(msg,...) Log.info(msg, __VA_ARGS__);
+#define INFO(msg,...) Log.info(msg, ## __VA_ARGS__)
 #else
 #define INFO(msg,...)
 #endif
 
 #if LOGLEVEL >= LOG_LEVEL_ERROR
-#define ERROR(msg,...) Log.error(msg, __VA_ARGS__);
+#define ERROR(msg,...) Log.error(msg, ## __VA_ARGS__)
 #else
 #define ERROR(msg,...)
 #endif
